@@ -1,1 +1,6 @@
 /src/Debug
+/Samples/Sample1_NodeNamePrinter/bin/Debug/Sample1_NodeNamePrinter.vshost.exe
+/Samples/Sample1_NodeNamePrinter/bin/Debug/Sample1_NodeNamePrinter.vshost.exe.config
+/Samples/Sample1_NodeNamePrinter/bin/Debug/Sample1_NodeNamePrinter.vshost.exe.manifest
+/Samples/Sample1_NodeNamePrinter/obj
+/src/*.sdf

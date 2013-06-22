@@ -11,4 +11,10 @@ namespace Fbx
 
         return mgr;
     }
+
+    Manager::~Manager()
+    {
+        manager->Destroy();
+        manager = NULL;
+    }
 }

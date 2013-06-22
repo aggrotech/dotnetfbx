@@ -1,5 +1,7 @@
 #pragma once
 
+using namespace System;
+
 namespace Fbx
 {
     ref class NodeAttribute;
@@ -9,15 +11,36 @@ namespace Fbx
     {
     public:
 
-        System::String^ Name;
+        // Basic Properties
 
-        int GetChildCount();
+        property String^ Name
+        {
+            String^ get();
+            void set(String^ name);
+        }
+        
 
-        Node^ GetChild(int i);
+        // Child Nodes
 
-        int GetNodeAttributeCount();
+        property int ChildCount
+        {
+            int get();
+        }
 
-        NodeAttribute^ GetNodeAttribute();
+        Node^ GetChild(int index);
+
+
+        // Node Attributes
+
+        property int NodeAttributeCount
+        {
+            int get();
+        }
+
+        property NodeAttribute^ Attribute
+        {
+            NodeAttribute^ get();
+        }
 
         NodeAttribute^ GetNodeAttributeByIndex(int index);
 

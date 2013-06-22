@@ -10,8 +10,14 @@ namespace Fbx
 
         IoSettings^ Settings;
 
+        ~Manager();
+
     internal:
 
         ::FbxManager* manager;
+
+    private:
+
+        bool disposed;
     };
 }

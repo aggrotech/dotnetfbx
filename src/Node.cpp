@@ -3,9 +3,26 @@
 #include "NodeAttribute.h"
 #include "Mesh.h"
 
+using namespace System::Runtime::InteropServices;
+
 namespace Fbx
 {
-    int Node::GetChildCount()
+    // Basic Properties
+
+    String^ Node::Name::get()
+    {
+        return Marshal::PtrToStringAnsi((IntPtr)const_cast<char *>(InternalPointer->GetName()));
+    }
+
+    void Node::Name::set(String^ name)
+    {
+        char *charName = (char *)(void *)Marshal::StringToHGlobalAnsi(name);
+        InternalPointer->SetName(charName);
+    }
+
+    // Child Nodes
+
+    int Node::ChildCount::get()
     {
         return InternalPointer->GetChildCount();
     }
@@ -15,12 +32,15 @@ namespace Fbx
         return Node::FromInternalPointer(InternalPointer->GetChild(index));
     }
 
-    int Node::GetNodeAttributeCount()
+
+    // Node Attributes
+
+    int Node::NodeAttributeCount::get()
     {
         return InternalPointer->GetNodeAttributeCount();
     }
 
-    NodeAttribute^ Node::GetNodeAttribute()
+    NodeAttribute^ Node::Attribute::get()
     {
         return NodeAttribute::FromInternalPointer(InternalPointer->GetNodeAttribute());
     }
@@ -34,13 +54,8 @@ namespace Fbx
     {
         Node^ n = gcnew Node;
 
-        char *name = const_cast<char *>(node->GetName());
-
-        n->Name = System::Runtime::InteropServices::Marshal::PtrToStringAnsi(static_cast<System::IntPtr>(name));
         n->InternalPointer = node;
 
         return n;
     }
-
-
 }
