@@ -58,4 +58,9 @@ namespace Fbx
 
         return n;
     }
+
+    Mesh^ Node::MeshAttribute::get()
+    {
+        return Mesh::FromInternalPointer(InternalPointer->GetMesh());
+    }
 }

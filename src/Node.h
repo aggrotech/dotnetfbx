@@ -44,6 +44,11 @@ namespace Fbx
 
         NodeAttribute^ GetNodeAttributeByIndex(int index);
 
+        property Mesh^ MeshAttribute
+        {
+            Mesh^ get();
+        }
+
     internal:
 
         static Node^ FromInternalPointer(::FbxNode* node);
